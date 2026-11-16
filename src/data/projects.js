@@ -20,6 +20,6 @@ export const projects = [
     title: 'Yige',
     year: 2026,
     description: 'バンド「Moody Cassette」のベーシスト、YIGEのファンポスター、全3種。ライブの一場面をもとに、ピンクとブルーのデュオトーンとテープを裂いたようなレタリングで構成しました古いカバンから出てきたカセットテープみたいな、荒削りでちょっと懐かしい雰囲気を目指しています。',
-    images: ['/posters/yige-1.png', '/posters/yige-2.png', '/posters/yige-3.png'],
+    images: ['/posters/yige-1.png', '/posters/yige-2.png', '/posters/yige-3.png','/posters/yige-4.png','/posters/yige-5.png','/posters/yige-6.png'],
   },
 ]

@@ -30,7 +30,7 @@ export const socials = [
   {
     id: 'behance',
     name: 'Behance',
-    handle: 'Ethan Henares',
+    handle: '@Ethan Henares',
     url: 'https://www.behance.net/kentzdh',
   },
 ]

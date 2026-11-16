@@ -110,12 +110,6 @@ export default function Contact() {
           )}
         </form>
       )}
-
-      {canShowEmail && status !== 'sent' && (
-        <p className="body-text direct">
-          Or email me directly: <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </p>
-      )}
     </section>
   )
 }
