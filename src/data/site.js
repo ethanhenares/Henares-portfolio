@@ -10,7 +10,7 @@
 // 2) email (fallback): with no formEndpoint, the Send button opens the
 //    visitor's own email app with the message already written to this address.
 export const contact = {
-  formEndpoint: '',
+  formEndpoint: 'https://formspree.io/f/xgakaded',
   email: 'ethanhenares2006@gmail.com',
 }
 
