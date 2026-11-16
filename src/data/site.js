@@ -11,28 +11,26 @@
 //    visitor's own email app with the message already written to this address.
 export const contact = {
   formEndpoint: '',
-  email: 'your-email@example.com',
+  email: 'ethanhenares2006@gmail.com',
 }
 
-// ---- Socials -------------------------------------------------------------
-// Replace each url / handle with your own. Add, remove or reorder freely.
 export const socials = [
   {
     id: 'instagram',
     name: 'Instagram',
-    handle: '@your_handle',
-    url: 'https://www.instagram.com/your_handle',
+    handle: '@keisweetpotet',
+    url: 'https://www.instagram.com/kei1024sweetpotet/',
   },
   {
     id: 'tiktok',
     name: 'TikTok',
-    handle: '@your_handle',
-    url: 'https://www.tiktok.com/@your_handle',
+    handle: '@keisweetpotet',
+    url: 'https://www.tiktok.com/@keisweetpotet',
   },
   {
     id: 'behance',
     name: 'Behance',
-    handle: 'your_handle',
-    url: 'https://www.behance.net/your_handle',
+    handle: 'Ethan Henares',
+    url: 'https://www.behance.net/kentzdh',
   },
 ]
