@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const WHEEL_COOLDOWN_MS = 350
 
@@ -10,6 +10,7 @@ export default function ProjectCard({ project, onEnter, onLeave, onShift }) {
   const ref = useRef(null)
   const lastWheel = useRef(0)
   const multi = images.length > 1
+  const [slide, setSlide] = useState(0)
 
   useEffect(() => {
     const el = ref.current
@@ -49,13 +50,33 @@ export default function ProjectCard({ project, onEnter, onLeave, onShift }) {
       onKeyDown={onKeyDown}
       aria-label={multi ? `${title}, ${images.length} posters. Scroll or use arrow keys to switch.` : title}
     >
+      {/* Touch / small screens: swipeable posters shown right in the list */}
+      <div className="inline-posters">
+        <div
+          className="strip"
+          onScroll={(e) => {
+            const el = e.currentTarget
+            setSlide(Math.round(el.scrollLeft / el.clientWidth))
+          }}
+        >
+          {images.map((src) => (
+            <img key={src} src={src} alt="" loading="lazy" draggable="false" />
+          ))}
+        </div>
+        {multi && (
+          <p className="strip-count" aria-hidden="true">
+            {slide + 1} / {images.length}
+          </p>
+        )}
+      </div>
       <h2 className="project-title">{title}</h2>
       <p className="project-meta">
         {year} / {description}
       </p>
       {multi && (
         <p className="project-hint" aria-hidden="true">
-          {images.length} posters — scroll
+          {images.length} posters — <span className="hint-mouse">scroll</span>
+          <span className="hint-touch">swipe</span>
         </p>
       )}
     </li>

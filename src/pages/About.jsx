@@ -2,8 +2,9 @@ const skills = [
   'Poster & layout design',
   'Duotone and collage techniques',
   'Photoshop & Illustrator',
-  'Typography (English and Japanese)',
+  'Typography (Latin and Japanese)',
   'Album and CD mockups',
+  'HTML, CSS & React (learning)',
 ]
 
 export default function About() {
@@ -11,7 +12,7 @@ export default function About() {
     <section className="page page-right">
       <h1 className="page-title">About</h1>
       <p className="body-text">
-        Im kei, a graphic design student who loves turning music into pictures. I make posters with
+        I'm kei, a graphic design student who loves turning music into pictures. I make posters with
         duotone color and collage texture, aiming for images where you can almost hear the drumbeat.
         Most of my work so far is fan art for artists I admire.
       </p>

@@ -13,13 +13,6 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-html[data-theme='light'] {
-  --bg: #efedf1;
-  --text: #0b0a0d;
-  --muted: #5d5864;
-  --line: rgba(0, 0, 0, 0.18);
-}
-
 *,
 *::before,
 *::after {
@@ -33,13 +26,13 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100svh;
   color: var(--text);
   background: var(--bg);
   font-family: var(--sans);
   font-weight: 300;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  transition: background 0.5s var(--ease), color 0.5s var(--ease);
 }
 
 a {
@@ -88,11 +81,6 @@ a {
   opacity: 0.16;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-html[data-theme='light'] .backdrop {
-  filter: invert(1) hue-rotate(180deg);
-  opacity: 0.8;
 }
 
 @keyframes drift {
@@ -186,6 +174,7 @@ html[data-theme='light'] .backdrop {
 /* ---------- Main ---------- */
 .main {
   min-height: 100vh;
+  min-height: 100svh;
   padding: 0 var(--edge);
   animation: rise 0.8s var(--ease) both;
 }
@@ -204,6 +193,7 @@ html[data-theme='light'] .backdrop {
 /* ---------- Home: text block bottom-right ---------- */
 .home {
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -227,8 +217,10 @@ html[data-theme='light'] .backdrop {
 }
 
 /* ---------- Projects: big right-aligned list ---------- */
-.projects {
+.projects,
+.socials {
   min-height: 100vh;
+  min-height: 100svh;
   padding: 3rem 0 5rem;
 }
 
@@ -439,11 +431,6 @@ html[data-theme='light'] .backdrop {
   font-weight: 300;
 }
 
-html[data-theme='light'] .form input,
-html[data-theme='light'] .form textarea {
-  background: rgba(255, 255, 255, 0.6);
-}
-
 .form input:focus,
 .form textarea:focus {
   outline: none;
@@ -461,7 +448,83 @@ html[data-theme='light'] .form textarea {
   font-size: 0.85rem;
 }
 
-/* ---------- Footer: © and theme toggle bottom-left ---------- */
+/* ---------- Socials: big right-aligned list ---------- */
+.socials {
+  padding: 3rem 0 5rem;
+}
+
+.social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+.social-link {
+  display: block;
+  padding: 0.4rem 0 1.1rem;
+  transition: opacity 0.4s var(--ease);
+}
+
+.social-list:hover .social-link:not(:hover),
+.social-list:focus-within .social-link:not(:focus-visible) {
+  opacity: 0.35;
+}
+
+.social-name {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.social-handle {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* ---------- Contact states ---------- */
+.form .trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.notice a,
+.direct a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notice-error {
+  border-color: var(--red);
+  background: rgba(179, 32, 44, 0.18);
+}
+
+.notice code {
+  font-size: 0.85em;
+}
+
+/* ---------- Inline posters (touch + small screens) ---------- */
+.inline-posters {
+  display: none;
+}
+
+.hint-touch {
+  display: none;
+}
+
+/* ---------- Footer: © bottom-left ---------- */
 .footer {
   position: fixed;
   left: 0;
@@ -474,46 +537,6 @@ html[data-theme='light'] .form textarea {
   margin: 0;
   font-size: 0.62rem;
   font-weight: 700;
-}
-
-.theme {
-  display: flex;
-  flex-direction: column-reverse; /* Light at the bottom, like the reference */
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-}
-
-.theme-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--text);
-  font: inherit;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.3s var(--ease);
-}
-
-.theme-btn:hover,
-.theme-btn.is-on {
-  opacity: 1;
-}
-
-.box {
-  width: 9px;
-  height: 9px;
-  border: 1px solid currentColor;
-}
-
-.theme-btn.is-on .box {
-  background: currentColor;
 }
 
 /* ---------- Intro: "kei portfolio" splash that fades into the site ---------- */
@@ -594,7 +617,7 @@ html[data-theme='light'] .form textarea {
   }
 }
 
-/* ---------- Small screens: normal flow instead of fixed corners ---------- */
+/* ---------- Tablets and phones: normal flow instead of fixed corners ---------- */
 @media (max-width: 799px) {
   :root {
     --edge: 1.25rem;
@@ -602,14 +625,36 @@ html[data-theme='light'] .form textarea {
 
   .header {
     position: static;
-    padding: 1.5rem var(--edge) 0;
+    padding: 1.25rem var(--edge) 0;
+  }
+
+  .name {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
   }
 
   .nav {
     display: flex;
-    gap: 1.25rem;
     flex-wrap: wrap;
-    margin-top: 1.5rem;
+    gap: 0 1.4rem;
+    margin-top: 1.25rem;
+  }
+
+  /* comfortable tap targets */
+  .nav-link {
+    padding: 0.7rem 0;
+    font-size: 0.85rem;
+  }
+
+  /* in a horizontal row keep the label and put the dot underneath it */
+  .nav-link.is-active .nav-label {
+    opacity: 1;
+  }
+
+  .nav-dot {
+    left: 50%;
+    top: auto;
+    bottom: 0.15rem;
+    margin: 0 0 0 -3px;
   }
 
   .main {
@@ -617,35 +662,128 @@ html[data-theme='light'] .form textarea {
   }
 
   .home {
-    min-height: 55vh;
+    min-height: 60vh;
+    min-height: 60svh;
+    padding-bottom: 2rem;
   }
 
   .projects,
+  .socials,
   .page {
-    padding-top: 2rem;
+    min-height: 0;
+    padding: 1.5rem 0 3rem;
   }
 
-  .previews {
-    display: none;
+  .page-right {
+    max-width: none;
   }
 
   .footer {
     position: static;
+    padding: 1rem var(--edge) 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* iOS zooms into inputs below 16px */
+  .form input,
+  .form textarea {
+    font-size: 1rem;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding-inline: 1.6rem;
+  }
+
+  .intro-portfolio {
+    font-size: clamp(2.2rem, 14vw, 5rem);
+  }
+}
+
+/* ---------- Phones: left-aligned lists read better ---------- */
+@media (max-width: 599px) {
+  .project-list,
+  .social-list {
+    text-align: left;
+  }
+
+  .project-meta,
+  .project-hint {
+    margin-left: 0;
+  }
+
+  .home {
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Touch devices and narrow screens: posters sit inside the list ---------- */
+@media (max-width: 899px), (hover: none) {
+  .previews {
+    display: none;
+  }
+
+  .project-list {
+    max-width: 640px;
+    margin-left: auto;
+  }
+
+  .project {
+    padding-bottom: 2rem;
+  }
+
+  /* with no hover, nothing should be dimmed */
+  .project-list:hover .project:not(:hover),
+  .project-list:focus-within .project:not(:focus),
+  .social-list:hover .social-link:not(:hover),
+  .social-list:focus-within .social-link:not(:focus-visible) {
+    opacity: 1;
+  }
+
+  .inline-posters {
+    display: block;
+    margin-bottom: 0.9rem;
+  }
+
+  .strip {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem var(--edge) 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .theme {
-    flex-direction: row-reverse;
-    margin: 0;
-    gap: 1rem;
+  .strip::-webkit-scrollbar {
+    display: none;
   }
 
-  .theme-btn {
-    writing-mode: horizontal-tb;
-    transform: none;
+  .strip img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 846 / 525;
+    object-fit: contain;
+    scroll-snap-align: center;
+    -webkit-mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 62%, transparent 100%);
+    mask-image: radial-gradient(ellipse 72% 78% at 50% 50%, #000 62%, transparent 100%);
+    user-select: none;
+  }
+
+  .strip-count {
+    margin: 0.3rem 0 0;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+
+  .hint-mouse {
+    display: none;
+  }
+
+  .hint-touch {
+    display: inline;
   }
 }
 
