@@ -15,7 +15,6 @@ export default function ProjectCard({ project, onEnter, onLeave, onShift }) {
   useEffect(() => {
     const el = ref.current
     if (!el || !multi) return
-    // Native listener: React's onWheel is passive, so it can't stop the page scrolling.
     function onWheel(e) {
       e.preventDefault()
       const now = performance.now()

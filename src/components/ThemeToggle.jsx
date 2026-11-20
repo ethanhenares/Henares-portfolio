@@ -22,7 +22,6 @@ export default function ThemeToggle() {
     try {
       localStorage.setItem('theme', theme)
     } catch {
-      /* storage unavailable: theme just won't persist */
     }
   }, [theme])
 

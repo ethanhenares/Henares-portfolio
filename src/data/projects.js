@@ -1,5 +1,3 @@
-// Each project can have several posters. Hover a title and scroll the mouse
-// wheel (or press the arrow keys while it is focused) to switch between them.
 export const projects = [
   {
     id: 'ado',

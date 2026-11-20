@@ -3,7 +3,6 @@ const skills = [
   'Duotone and collage techniques',
   'Photoshop & Illustrator',
   'Typography (English and Japanese)',
-  'Album and CD mockups',
 ]
 
 export default function About() {

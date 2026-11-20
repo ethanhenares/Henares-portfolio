@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-const HOLD_MS = 2600 // how long the title stays
-const FADE_MS = 1000 // how long the fade-out takes
+const HOLD_MS = 2600
+const FADE_MS = 1000 
 
 export default function Intro() {
-  const [phase, setPhase] = useState('show') // show -> leave -> gone
+  const [phase, setPhase] = useState('show')
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'

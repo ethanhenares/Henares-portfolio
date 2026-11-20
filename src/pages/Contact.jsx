@@ -4,20 +4,18 @@ import { contact } from '../data/site.js'
 const EMAIL_IS_PLACEHOLDER = contact.email.includes('example.com')
 
 export default function Contact() {
-  // idle | sending | sent | opened (email app opened) | error | unconfigured
   const [status, setStatus] = useState('idle')
 
   async function handleSubmit(e) {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
-    if (data.get('_gotcha')) return // spam bots fill the hidden field
+    if (data.get('_gotcha')) return 
 
     const name = data.get('name')
     const email = data.get('email')
     const message = data.get('message')
 
-    // Option 1: a form service delivers the message to your inbox.
     if (contact.formEndpoint) {
       setStatus('sending')
       try {
@@ -35,7 +33,6 @@ export default function Contact() {
       return
     }
 
-    // Option 2: open the visitor's own email app with the message filled in.
     if (EMAIL_IS_PLACEHOLDER) {
       setStatus('unconfigured')
       return

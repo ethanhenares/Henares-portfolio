@@ -7,8 +7,6 @@ import Intro from './Intro.jsx'
 
 export default function Layout() {
   const { pathname } = useLocation()
-
-  // Start every page at the top when the route changes
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
