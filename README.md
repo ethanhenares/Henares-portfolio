@@ -36,11 +36,3 @@ public/
   posters/      project images
 ```
 
-## Editing the content
-
-- **Projects and posters:** `src/data/projects.js` (each poster has an `alt` text for screen readers).
-- **Contact email / form and social links:** `src/data/site.js`.
-
-## Deploying
-
-Deployed on Vercel. `vercel.json` rewrites every URL to `index.html`, so opening or refreshing a page directly (for example `/about`) works. On Netlify, add a file `public/_redirects` containing `/* /index.html 200` instead.
