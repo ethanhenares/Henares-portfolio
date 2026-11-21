@@ -8,7 +8,6 @@ const skills = [
   'Photoshop & Illustrator',
   'Typography (English and Japanese)',
 ]
-
 export default function About() {
   return (
     <Page>
