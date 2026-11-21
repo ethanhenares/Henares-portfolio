@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
+import BodyText from '../components/BodyText.jsx'
+import Button from '../components/Button.jsx'
+import Page from '../components/Page.jsx'
+import PageTitle from '../components/PageTitle.jsx'
 
 export default function NotFound() {
   return (
-    <section className="page page-right">
-      <h1 className="page-title">404</h1>
-      <p className="body-text">That page doesn't exist.</p>
-      <Link to="/" className="btn">
+    <Page>
+      <PageTitle>404</PageTitle>
+      <BodyText>That page doesn't exist.</BodyText>
+      <Button as={Link} to="/">
         Back to home
-      </Link>
-    </section>
+      </Button>
+    </Page>
   )
 }

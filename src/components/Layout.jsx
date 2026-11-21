@@ -7,15 +7,19 @@ import Intro from './Intro.jsx'
 
 export default function Layout() {
   const { pathname } = useLocation()
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [pathname])
 
   return (
-    <div className="shell">
+    <div className="relative isolate min-h-svh">
       <Backdrop />
       <Header />
-      <main className="main" key={pathname}>
+      <main
+        key={pathname}
+        className="animate-rise px-5 motion-reduce:animate-none md:min-h-svh md:px-10"
+      >
         <Outlet />
       </main>
       <Footer />

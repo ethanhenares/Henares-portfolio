@@ -1,4 +1,10 @@
 import { useState } from 'react'
+import BodyText from '../components/BodyText.jsx'
+import Button from '../components/Button.jsx'
+import Field from '../components/Field.jsx'
+import Notice from '../components/Notice.jsx'
+import Page from '../components/Page.jsx'
+import PageTitle from '../components/PageTitle.jsx'
 import { contact } from '../data/site.js'
 
 const EMAIL_IS_PLACEHOLDER = contact.email.includes('example.com')
@@ -46,28 +52,18 @@ export default function Contact() {
   const canShowEmail = !EMAIL_IS_PLACEHOLDER
 
   return (
-    <section className="page page-right">
-      <h1 className="page-title">Contact</h1>
-      <p className="body-text">Want to work together or just say hi? Send me a message.</p>
+    <Page>
+      <PageTitle>Contact</PageTitle>
+      <BodyText>Want to work together or just say hi? Send me a message.</BodyText>
 
       {status === 'sent' ? (
-        <p className="notice" role="status">
-          Thank you — your message was sent. I'll get back to you soon.
-        </p>
+        <Notice role="status">Thank you — your message was sent. I'll get back to you soon.</Notice>
       ) : (
-        <form className="form" onSubmit={handleSubmit}>
-          <label>
-            Name
-            <input type="text" name="name" required autoComplete="name" />
-          </label>
-          <label>
-            Email
-            <input type="email" name="email" required autoComplete="email" />
-          </label>
-          <label>
-            Message
-            <textarea name="message" rows="5" required />
-          </label>
+        <form onSubmit={handleSubmit} className="mt-6 grid gap-[1.1rem]">
+          <Field label="Name" type="text" name="name" required autoComplete="name" />
+          <Field label="Email" type="email" name="email" required autoComplete="email" />
+          <Field label="Message" as="textarea" name="message" rows="5" required />
+
           {/* hidden trap for spam bots; real people never see or fill it */}
           <input
             type="text"
@@ -75,20 +71,21 @@ export default function Contact() {
             tabIndex="-1"
             autoComplete="off"
             aria-hidden="true"
-            className="trap"
+            className="absolute -left-[9999px] size-px opacity-0"
           />
-          <button type="submit" className="btn" disabled={status === 'sending'}>
+
+          <Button type="submit" disabled={status === 'sending'} className="justify-self-start">
             {status === 'sending' ? 'Sending…' : 'Send message'}
-          </button>
+          </Button>
 
           {status === 'opened' && (
-            <p className="notice" role="status">
+            <Notice role="status">
               Your email app should have opened with the message ready — press send there. Nothing
               opened? Write to {contact.email} directly.
-            </p>
+            </Notice>
           )}
           {status === 'error' && (
-            <p className="notice notice-error" role="alert">
+            <Notice tone="error" role="alert">
               Sorry, the message didn't go through.
               {canShowEmail ? (
                 <>
@@ -98,15 +95,21 @@ export default function Contact() {
               ) : (
                 ' Please try again in a moment.'
               )}
-            </p>
+            </Notice>
           )}
           {status === 'unconfigured' && (
-            <p className="notice notice-error" role="alert">
+            <Notice tone="error" role="alert">
               Contact isn't set up yet — add your form link or email in <code>src/data/site.js</code>.
-            </p>
+            </Notice>
           )}
         </form>
       )}
-    </section>
+
+      {canShowEmail && status !== 'sent' && (
+        <BodyText className="mt-[1.1rem] [&_a]:underline [&_a]:underline-offset-4">
+          Or email me directly: <a href={`mailto:${contact.email}`}>{contact.email}</a>
+        </BodyText>
+      )}
+    </Page>
   )
 }
