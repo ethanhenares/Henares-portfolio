@@ -15,15 +15,6 @@ A personal portfolio for a graphic designer, built with **React**, **React Route
 
 All pages share one `Header` and `Footer` through `Layout` and React Router's `Outlet`.
 
-## Run it
-
-```bash
-npm install
-npm run dev      
-npm run build    
-npm run lint     
-```
-
 ## Project structure
 
 ```
@@ -35,4 +26,3 @@ src/
 public/
   posters/      project images
 ```
-
