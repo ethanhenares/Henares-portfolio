@@ -8,7 +8,6 @@ const links = [
   { to: '/contact', label: 'Contact' },
 ]
 
-// Phones: name on top, menu in a row. Wide screens: pinned to the top-left corner.
 export default function Header() {
   return (
     <header className="px-5 pt-5 md:fixed md:top-0 md:left-0 md:z-5 md:px-10 md:py-8">

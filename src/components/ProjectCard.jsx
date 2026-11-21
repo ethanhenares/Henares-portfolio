@@ -2,9 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 
 const WHEEL_COOLDOWN_MS = 350
 
-// One entry in the project list: poster(s), big title and a one-line description.
-// Mouse + wide screen: hover and scroll the wheel (or use the arrow keys) to switch
-// the poster shown beside the list. Touch / small screens: swipe the posters shown here.
 export default function ProjectCard({ project, onEnter, onLeave, onShift }) {
   const { id, title, year, description, images } = project
   const ref = useRef(null)
@@ -15,7 +12,6 @@ export default function ProjectCard({ project, onEnter, onLeave, onShift }) {
   useEffect(() => {
     const el = ref.current
     if (!el || !multi) return
-    // Native listener: React's onWheel is passive, so it can't stop the page scrolling.
     function onWheel(e) {
       e.preventDefault()
       const now = performance.now()
