@@ -6,7 +6,7 @@ const skills = [
   'Poster & layout design',
   'Duotone and collage techniques',
   'Photoshop & Illustrator',
-  'Typography (Latin and Japanese)',
+  'Typography (English and Japanese)',
 ]
 
 export default function About() {
